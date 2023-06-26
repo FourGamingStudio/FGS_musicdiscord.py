@@ -58,5 +58,3 @@ class Server:
 
         return round((e_time - s_time) * 1000)
 
-server = Server("mindustry.kr")
-print(server.get_status())
