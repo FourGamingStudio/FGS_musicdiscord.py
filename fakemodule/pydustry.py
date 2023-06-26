@@ -1,10 +1,22 @@
 from socket import socket, create_connection, AF_INET, SOCK_DGRAM
 from struct import unpack
 from time import time
+from dataclasses import dataclass
+
+#Gán Kiểu Dữ Liệu
+@dataclass
+class Status:
+    name: str
+    map: str
+    players: int
+    wave: int
+    version: float
+    vertype: str
+    ping: float
 
 
 class Server:
-    def __init__(self,server_host: str,server_port: int=6567,input_port: int=6859) -> None:
+    def __init__(self, server_host: str,server_port: int=6567,input_port: int=6859) -> None:
         self.server = (server_host, server_port)
         self.input_server = (server_host, input_port)
     #Lệnh Lấy Thông Tin Server 
@@ -45,3 +57,6 @@ class Server:
         e_time = time()
 
         return round((e_time - s_time) * 1000)
+
+server = Server("mindustry.kr")
+print(server.get_status())
